@@ -13,7 +13,7 @@ const App = () => {
       <Router history={history}>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/calendar" exact component={Calendar} />
+          <Route path="/calendar" component={Calendar} />
         </Switch>
       </Router>
     </div>
