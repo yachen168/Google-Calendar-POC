@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import CustomCalendar from "../../components/CustomCalendar";
+import history from "../../history";
 
 const Calendar = () => {
   const [calendarData, setCalendarData] = useState(null);
@@ -16,6 +18,7 @@ const Calendar = () => {
       console.log("Response", response);
       setCalendarData(() => JSON.stringify(response.result));
     } catch (error) {
+      history.push("/");
       console.error("Execute error", error);
     }
   };
@@ -23,6 +26,7 @@ const Calendar = () => {
   return (
     <div>
       <button onClick={execute}>Get Calender</button>
+      <CustomCalendar />
       <div>{calendarData ? calendarData : null}</div>
     </div>
   );
