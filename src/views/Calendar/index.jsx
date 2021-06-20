@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import CustomCalendar from "../../components/CustomCalendar";
 import history from "../../history";
+import { getUserCalendar } from "../../actions/calendar";
 
 const Calendar = () => {
   const [calendarData, setCalendarData] = useState(null);
-
+  const dispatch = useDispatch();
   // Make sure the client is loaded and sign-in is complete before calling this method.
   const execute = async () => {
     try {
@@ -15,8 +17,8 @@ const Calendar = () => {
         orderBy: "startTime",
       });
       // Handle the results here (response.result has the parsed body).
-      console.log("Response", response);
       setCalendarData(() => JSON.stringify(response.result));
+      dispatch(getUserCalendar(response.result));
     } catch (error) {
       history.push("/");
       console.error("Execute error", error);

@@ -24,12 +24,19 @@ import { GET_USER_CALENDAR } from "../actions/actionTypes";
 
 */
 
-export default (state = {}, action) => {
+export default (state = { events: [] }, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case GET_USER_CALENDAR: {
-      return { ...state, ...payload };
+      const events = payload.items.map((item) => {
+        return {
+          title: item.summary,
+          start: item.start.dateTime,
+          end: item.end.dateTime,
+        };
+      });
+      return { ...state, ...payload, events };
     }
 
     default: {

@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 export default [
   {
     title: "All Day Event very long title",
@@ -25,8 +26,18 @@ export default [
 
   {
     title: "Some Event",
-    start: new Date(2021, 5, 9, 0, 0, 0),
-    end: new Date(2021, 5, 9, 0, 0, 0),
+    start: new Date(2021, 5, 9, 21, 0, 0),
+    end: new Date(2021, 5, 10, 2, 50, 0),
+  },
+  {
+    title: "Some Event",
+    start: new Date(2021, 5, 9, 21, 0, 0),
+    end: new Date(2021, 5, 10, 2, 50, 0),
+  },
+  {
+    title: "Some Event",
+    start: new Date(2021, 5, 9, 21, 0, 0),
+    end: new Date(2021, 5, 10, 1, 50, 0),
   },
   {
     title: "Conference",
@@ -48,8 +59,8 @@ export default [
   },
   {
     title: "Meeting",
-    start: new Date(2021, 4, 12, 14, 0, 0, 0),
-    end: new Date(2021, 4, 12, 15, 0, 0, 0),
+    start: new Date(2021, 4, 12, 23, 0, 0, 0),
+    end: new Date(2021, 4, 12, 24, 0, 0, 0),
   },
   {
     title: "Happy Hour",
