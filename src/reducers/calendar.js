@@ -34,9 +34,24 @@ export default (state = { events: [] }, action) => {
           title: item.summary,
           start: item.start.dateTime,
           end: item.end.dateTime,
+          id: item.id,
         };
       });
       return { ...state, ...payload, events };
+    }
+
+    case "ADD_EVENT_TO_CALENDAR": {
+      return {
+        ...state,
+        events: [
+          ...state.events,
+          {
+            title: payload.summary,
+            start: payload.start.dateTime,
+            end: payload.end.dateTime,
+          },
+        ],
+      };
     }
 
     default: {

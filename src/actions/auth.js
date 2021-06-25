@@ -7,3 +7,7 @@ export const signIn = (userId) => {
 export const signOut = () => {
   return { type: SIGN_OUT };
 };
+
+export const setIsSignIn = (data) => {
+  return { type: "SET_IS_SIGN_IN", payload: data };
+};

@@ -9,7 +9,7 @@ import events from "./events";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 const locales = {
-  "en-US": require("date-fns/locale/en-US"),
+  "zh-TW": require("date-fns/locale/zh-TW"),
 };
 
 let formats = {
@@ -30,17 +30,20 @@ const CustomCalendar = () => {
   return (
     <Calendar
       localizer={localizer}
-      step={60}
+      step={30}
       formats={formats}
       events={calendar.events}
       startAccessor="start"
       endAccessor="end"
       style={{ height: 600 }}
       onSelectEvent={(e) => console.log(e)}
-      // popup={true}
+      popup={true}
       showMultiDayTimes={true}
       selectable="ignoreEvents"
-      onSelectSlot={(slotInfo) => console.log(slotInfo, "1234")}
+      onNavigate={() => console.log("onNavigate")}
+      onView={() => console.log("onView")}
+      onRangeChange={(e) => console.log("onRangeChange", e)}
+      onSelectSlot={(slotInfo) => console.log("slotInfo", slotInfo)}
     />
   );
 };

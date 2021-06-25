@@ -1,22 +1,22 @@
 import { SIGN_IN, SIGN_OUT } from "../actions/actionTypes";
-import Cookies from "js-cookie";
 
-const auth = JSON.parse(Cookies.get("auth") || "{}");
-
-const initialState = {
-  token: auth,
+const INITIAL_STATE = {
+  isSignedIn: null,
 };
 
-export default (state = initialState, action) => {
+export default (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case SIGN_IN: {
-      return { ...state, token: payload };
+      return { ...state, isSignedIn: true };
+    }
+    case SIGN_OUT: {
+      return { ...state, isSignedIn: false };
     }
 
-    case SIGN_OUT: {
-      return { ...state, token: "" };
+    case "SET_IS_SIGN_IN": {
+      return { ...state, isSignedIn: payload };
     }
 
     default: {
